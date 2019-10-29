@@ -6,7 +6,6 @@ module Registrador(Shift_in, CLK, shift_out, Bit_0, Bit_1, Bit_2, Bit_3, Reset);
 
     assign shift_out = Bit_3;
 
-    
     always @(posedge CLK) begin
         
         if(Reset == 1'b1) begin
