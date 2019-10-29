@@ -19,7 +19,7 @@ module Registrador(Shift_in, CLK, shift_out, Bit_0, Bit_1, Bit_2, Bit_3, Reset);
             Bit_3 = Shift_in;
             Bit_2 = Bit_3;
             Bit_1 = Bit_2;
-            Bit_0 = Bit_1
+            Bit_0 = Bit_1;
 
         end
 
