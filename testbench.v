@@ -2,35 +2,32 @@
 
 module testbench ();
 
-    reg Shift_in, CLK, Reset, Bit_0, Bit_1, Bit_2, Bit_3;
+    reg Shift_in, CLK, Reset;
     wire shift_out;
 
-    Registrador Reg (.Shift_in(Shift_in), .CLK(CLK), .Reset(Reset), .shift_out(shift_out),
-    .Bit_0(Bit_0), .Bit_1(Bit_1), .Bit_2(Bit_2), .Bit_3(Bit_3));
+    Registrador Reg (.Shift_in(Shift_in), .CLK(CLK), .Reset(Reset), .shift_out(shift_out));
 
 
     initial begin
-          
-        $dumpvars;  
+
         $dumpfile("testbench.vcd");
-        $monitor("Shift_in %b Clock %b Bit_0 %b Bit_1 %b Bit_2 %b Bit_3 Shift_out %b");
+        $dumpvars;  
+        $monitor("Shift_in %b Clock %b Shift_out %b", Shift_in, CLK, shift_out  );
 
-    end
-
-    initial begin
+        CLK = 1'b1;
 
              Shift_in = 1'b1;
-        #20; Shift_in = 1'b0;
-        #20; Shift_in = 1'b1;
-        #20; Shift_in = 1'b1;
-        #20;
-
-        CLK = 1'b0;
+        #10; Shift_in = 1'b0;
+        #10; Shift_in = 1'b1;
+        #10; Shift_in = 1'b0;
+        #10; Shift_in = 1'b1;
+        #10; Shift_in = 1'b0;
+        #10;
 
         $finish;
     
     end
 
-    always #20 CLK = ~CLK;
+    always #10 CLK = ~CLK;
 
 endmodule
