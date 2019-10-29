@@ -17,14 +17,18 @@ module testbench ();
 
     initial begin
 
-             CLK = 1'b1; Shift_in = 1'b1;
-        #20; CLK = 1'b1; Shift_in = 1'b0;
-        #20; CLK = 1'b0; Shift_in = 1'b1;
-        #20; CLK = 1'b0; Shift_in = 1'b1;
+             Shift_in = 1'b1;
+        #20; Shift_in = 1'b0;
+        #20; Shift_in = 1'b1;
+        #20; Shift_in = 1'b1;
         #20;
+
+        CLK = 1'b0;
 
         $finish;
     
     end
+
+    always #20 CLK = ~CLK;
 
 endmodule
