@@ -28,6 +28,6 @@ module testbench ();
     
     end
 
-    always #10 CLK = ~CLK;
+    always #5 CLK = ~CLK;
 
 endmodule
